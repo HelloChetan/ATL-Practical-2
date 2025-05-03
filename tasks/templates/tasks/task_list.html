@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.title }} - {{ task.completed|yesno:"Completed,Pending" }}
+                <a href="{% url 'complete_task' task.id %}">Mark as Completed</a> |
+                <a href="{% url 'delete_task' task.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_task' %}">Add a New Task</a>
+</body>
+</html>
